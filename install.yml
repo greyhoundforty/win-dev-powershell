@@ -1,18 +1,12 @@
 #ps1_sysnative
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
 
-// Set up the needed strings 
-string remoteUri = "https://raw.githubusercontent.com/IBM-Bluemix/developer-tools-installer/master/windows-installer/";
-string fileName = "idt-win-installer.ps1";
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/IBM-Bluemix/developer-tools-installer/master/windows-installer/idt-win-installer.ps1 -OutFile idt-win-installer.ps1 -UseBasicParsing;
 
-//create object and concatenate strings
-WebClient wcObj = new WebClient();
-strWebResource = remoteUri + fileName;
-
-//Do the actual download
-wcObj.DownloadFileAsync(strWebResource, fileName); 
+.\idt-win-installer.ps1
 
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux;
 Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu.appx -UseBasicParsing;
 Rename-Item .\Ubuntu.appx .\Ubuntu.zip;
 Expand-Archive .\Ubuntu.zip .\Ubuntu;
+
