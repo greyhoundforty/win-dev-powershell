@@ -1,0 +1,62 @@
+{
+    "name": "win-dev-powershell",
+    "type": [
+      "terraform_v0.12"
+    ],
+    "location": "us-south",
+    "description": "Testing new powershell script on IaaS",
+    "tags": ["ryantiffany"],
+    "template_repo": {
+      "url": "https://github.com/greyhoundforty/win-dev-powershell"
+    },
+    "template_data": [
+      {
+        "folder": ".",
+        "type": "terraform_v0.12",
+        "variablestore": [
+          {
+            "name": "iaas_classic_username",
+            "value": "",
+            "type": "string",
+            "secure": true,
+        "description":"Classic IaaS Username"
+          },
+          {
+            "name": "iaas_classic_api_key",
+            "value": "",
+            "type": "string",
+            "secure": true,
+        "description":"Classic IaaS API Key"
+          },
+          {
+            "name": "os_image",
+            "value": "WIN_LATEST_64",
+            "type": "string",
+            "secure": false,
+        "description":"OS Image"
+          },
+          {
+            "name": "flavor",
+            "value": "",
+            "type": "string",
+            "secure": false,
+        "description":"Instance size"
+        },
+        {
+          "name": "datacenter",
+          "value": "dal12",
+          "type": "string",
+          "secure": false,
+      "description":"Datacenter where instance will be deployed."
+        },
+        {
+        "name": "domain",
+        "value": "cdetesting.com",
+        "type": "string",
+        "secure": false,
+    "description":"Domain for instance."
+      }
+        ]
+      }
+    ]
+  }
